@@ -17,6 +17,7 @@ module "ec2_instance" {
   instance_type       = var.instance_type
   security_group_id   = module.security_group.security_group_id
   user_data_script    = file("${path.module}/scripts/user_data.sh")
+  iam_instance_profile_name = module.iam_role.iam_instance_profile_name
 }
 
 # Module to configure IAM role and policies for the instance
