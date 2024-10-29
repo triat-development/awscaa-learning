@@ -44,4 +44,12 @@ data "aws_iam_policy_document" "instance_access_policy" {
     }
   }
 }
-    
+
+# Add the missing aws_caller_identity
+data "aws_caller_identity" "current" {}
+
+# Add output for the IAM instance profile
+output "iam_instance_profile_name" {
+  description = "The IAM instance profile name"
+  value       = aws_iam_instance_profile.my_instance_profile.name
+}
