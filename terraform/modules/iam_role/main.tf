@@ -36,12 +36,12 @@ data "aws_iam_policy_document" "instance_access_policy" {
     resources = ["*"]
     effect    = "Allow"
 
-    principals {
-      type        = "AWS"
-      identifiers = [
-        for group in var.iam_groups : "arn:aws:iam::${data.aws_caller_identity.current.account_id}:group/${group}"
-      ]
-    }
+#    principals {
+#      type        = "AWS"
+#      identifiers = [
+#        for group in var.iam_groups : "arn:aws:iam::${data.aws_caller_identity.current.account_id}:group/${group}"
+#      ]
+#    }
   }
 }
 

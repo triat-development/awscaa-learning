@@ -27,6 +27,13 @@ module "iam_role" {
   iam_groups      = var.iam_groups
 }
 
+module "route53_record" {
+  source           = "./modules/route53_record"
+  hosted_zone_name = "triat-development-studios.net"
+  record_name      = "devbox.triat-development-studios.net"
+  record_target    = module.ec2_instance.instance_public_dns
+}
+
 # Outputs
 output "instance_public_ip" {
   description = "Public IP of the EC2 instance"
